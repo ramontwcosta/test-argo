@@ -1,12 +1,22 @@
-apiVersion: v1
-kind: Service
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: myapp-service
+  name: jobzin
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
-  selector:
-    app: myapp
-  ports:
-  - port: 8080
-    protocol: TCP
-    targetPort: 8080
-  
+  template:
+    spec:
+      containers:
+      - name: slack-notification
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "--data-urlencode"
+          - "payload={\"channel\": \"#somechannel\", \"usernae\": \"hello\", \"text\": \"App Sync succeeded\", \"icon_emoji\": \":ghost:\"}"
+          - "https://ehnois.requestcatcher.com/test"
+      restartPolicy: Never
+  backoffLimit: 2
