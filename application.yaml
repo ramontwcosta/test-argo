@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/joaogoncalves-tw/test-argo.git
     targetRevision: HEAD
-    path: dev
+    path: dev/notifications
   destination: 
     server: https://kubernetes.default.svc
     namespace: myapp
@@ -30,13 +30,10 @@ metadata:
 spec:
   project: default
 
-  sources:
-    - repoURL: https://github.com/joaogoncalves-tw/test-argo.git
-      targetRevision: HEAD
-      path: dev/demand
-    - repoURL: https://github.com/joaogoncalves-tw/test-argo.git
-      targetRevision: HEAD
-      path: dev/notifications
+  source:
+    repoURL: https://github.com/joaogoncalves-tw/test-argo.git
+    targetRevision: HEAD
+    path: dev/demand
   destination: 
     server: https://kubernetes.default.svc
     namespace: myapp
