@@ -18,6 +18,6 @@ spec:
           - "POST"
           - "--data-urlencode"
           - "payload={\"channel\": \"#somechannel\", \"username\": \"hello\", \"text\": \"App Sync succeeded\", \"icon_emoji\": \":ghost:\"}"
-          - "https://ehnois.requestcatcher.com/test"
+          - "https://rdc.requestcatcher.com/test"
       restartPolicy: Never
   backoffLimit: 2
