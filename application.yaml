@@ -21,27 +21,3 @@ spec:
     automated:
       selfHeal: true
       prune: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: myapp-argo-application2
-  namespace: argocd
-spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/joaogoncalves-tw/test-argo.git
-    targetRevision: HEAD
-    path: dev/demand
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: myapp
-
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-
-    automated:
-      selfHeal: true
-      prune: true
